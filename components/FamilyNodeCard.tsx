@@ -4,7 +4,6 @@ import { Person } from "@/types";
 import { getAvatarBg } from "@/utils/styleHelprs";
 import Image from "next/image";
 import { useDashboard } from "./DashboardContext";
-import DefaultAvatar from "./DefaultAvatar";
 
 interface FamilyNodeCardProps {
   person: Person;
@@ -57,32 +56,6 @@ export default function FamilyNodeCard({
           <span className="leading-none">+</span>
         </div>
       )}
-
-      {/* 1. Avatar */}
-      {showAvatar && (
-        <div className="relative z-10 mb-1.5 sm:mb-2">
-          <div
-            className={`
-              h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full flex items-center justify-center text-[10px] sm:text-xs md:text-sm text-white overflow-hidden shrink-0 shadow-lg ring-2 ring-white transition-transform duration-300 group-hover:scale-105
-              ${getAvatarBg(person.gender)}
-            `}
-          >
-            {person.avatar_url ? (
-              <Image
-                unoptimized
-                src={person.avatar_url}
-                alt={person.full_name}
-                className="w-full h-full object-cover"
-                width={64}
-                height={64}
-              />
-            ) : (
-              <DefaultAvatar gender={person.gender} size={64} />
-            )}
-          </div>
-        </div>
-      )}
-
       {/* 2. Gender Icon + Name */}
       <div className="flex flex-col items-center justify-center gap-1 w-full px-0.5 sm:px-1 relative z-10">
         <div

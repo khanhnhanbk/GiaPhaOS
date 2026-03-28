@@ -151,7 +151,7 @@ export function useDashboard(): DashboardState {
       setMemberModalId: () => {},
       showCreateMember: false,
       setShowCreateMember: () => {},
-      showAvatar: true,
+      showAvatar: false,
       setShowAvatar: () => {},
       view: "list",
       setView: () => {},

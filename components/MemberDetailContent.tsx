@@ -1,6 +1,5 @@
 "use client";
 
-import DefaultAvatar from "@/components/DefaultAvatar";
 import RelationshipManager from "@/components/RelationshipManager";
 import { Person } from "@/types";
 import {
@@ -26,6 +25,7 @@ import {
 import Image from "next/image";
 import { useCallback, useState } from "react";
 import { FemaleIcon, MaleIcon } from "./GenderIcons";
+import DefaultAvatar from "./DefaultAvatar";
 
 interface MemberDetailContentProps {
   person: Person;
@@ -117,27 +117,10 @@ export default function MemberDetailContent({
           className="absolute -bottom-12 sm:-bottom-16 left-6 sm:left-8 z-10"
         >
           <div
-            className={`h-24 w-24 sm:h-32 sm:w-32 rounded-full border-4 sm:border-[6px] border-white flex items-center justify-center text-3xl sm:text-4xl font-bold text-white overflow-hidden shadow-xl shrink-0
-             ${
-               person.gender === "male"
-                 ? "bg-linear-to-br from-sky-400 to-sky-700"
-                 : person.gender === "female"
-                   ? "bg-linear-to-br from-rose-400 to-rose-700"
-                   : "bg-linear-to-br from-stone-400 to-stone-600"
-             }`}
+            className={`h-24 w-24 sm:h-32 sm:w-32 rounded-full border-4 sm:border-[6px] border-white flex items-center justify-center text-3xl sm:text-4xl font-bold text-white overflow-hidden shadow-xl shrink-0`}
           >
-            {person.avatar_url ? (
-              <Image
-                unoptimized
-                src={person.avatar_url}
-                alt={person.full_name}
-                width={128}
-                height={128}
-                className="h-full w-full object-cover"
-              />
-            ) : (
+             
               <DefaultAvatar gender={person.gender} size={128} />
-            )}
           </div>
           {/* Gender Indicator Icon */}
           <div

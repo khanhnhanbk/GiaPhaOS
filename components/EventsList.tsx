@@ -64,10 +64,12 @@ function EventCard({
   event,
   index,
   onEditCustomEvent,
+  currentYear,
 }: {
   event: FamilyEvent;
   index: number;
   onEditCustomEvent: (e: FamilyEvent) => void;
+  currentYear: number;
 }) {
   const isBirthday = event.type === "birthday";
   const isCustom = event.type === "custom_event";
@@ -88,8 +90,7 @@ function EventCard({
   // Compute age or years since for display
   const yearsInfo = (() => {
     if (!event.originYear) return null;
-    const now = new Date().getFullYear();
-    const diff = now - event.originYear;
+    const diff = currentYear - event.originYear;
     if (diff <= 0) return null;
     if (isBirthday) return `${diff} tuổi`;
     if (event.type === "death_anniversary") return `${diff} năm`;
@@ -265,6 +266,8 @@ export default function EventsList({
   const handleModalSuccess = () => {
     router.refresh();
   };
+
+  const [currentYear] = useState(() => new Date().getFullYear());
 
   const [todayDate] = useState(() => {
     const today = new Date();
@@ -457,6 +460,7 @@ export default function EventsList({
               key={`${event.personId}-${event.type}-${event.eventDateLabel}`}
               event={event}
               index={i}
+              currentYear={currentYear}
               onEditCustomEvent={handleOpenEditModal}
             />
           ))}

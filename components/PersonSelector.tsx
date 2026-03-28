@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Check, ChevronDown, Database, Search } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import DefaultAvatar from "./DefaultAvatar";
 import { FemaleIcon, MaleIcon } from "./GenderIcons";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -81,35 +80,6 @@ export default function PersonSelector({
           ${isOpen ? "border-amber-300 bg-white shadow-md ring-2 ring-amber-500/10" : "border-stone-200/60 hover:border-amber-300 hover:bg-white/90 hover:shadow-md"}`}
       >
         <div className="relative shrink-0">
-          <div
-            className={`size-8 rounded-full flex items-center justify-center text-xs font-bold overflow-hidden ring-2 ring-white shadow-xs
-            ${
-              currentPerson
-                ? `${getAvatarBg(currentPerson.gender)} text-white`
-                : showAllOption && selectedId === null
-                  ? "bg-stone-500 text-white"
-                  : "bg-stone-100 text-stone-400"
-            }`}
-          >
-            {currentPerson ? (
-              currentPerson.avatar_url ? (
-                <Image
-                  unoptimized
-                  src={currentPerson.avatar_url}
-                  alt={currentPerson.full_name}
-                  width={32}
-                  height={32}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <DefaultAvatar gender={currentPerson.gender} size={32} />
-              )
-            ) : showAllOption && selectedId === null ? (
-              <Database className="size-4" />
-            ) : (
-              "?"
-            )}
-          </div>
           {currentPerson && (
             <div
               className={`absolute -bottom-0.5 -right-0.5 size-3.5 rounded-full ring-2 ring-white shadow-xs flex items-center justify-center ${getGenderStyle(currentPerson.gender)}`}
@@ -215,23 +185,7 @@ export default function PersonSelector({
                           }`}
                       >
                         <div className="relative shrink-0">
-                          <div
-                            className={`size-8 rounded-full flex items-center justify-center text-[10px] font-bold text-white overflow-hidden ring-1 ring-white shadow-xs
-                            ${getAvatarBg(person.gender)}`}
-                          >
-                            {person.avatar_url ? (
-                              <Image
-                                unoptimized
-                                src={person.avatar_url}
-                                alt={person.full_name}
-                                width={32}
-                                height={32}
-                                className="h-full w-full object-cover"
-                              />
-                            ) : (
-                              <DefaultAvatar gender={person.gender} size={32} />
-                            )}
-                          </div>
+                  
                           <div
                             className={`absolute -bottom-0.5 -right-0.5 size-3.5 rounded-full ring-1 ring-white shadow-xs flex items-center justify-center ${getGenderStyle(person.gender)}`}
                           >

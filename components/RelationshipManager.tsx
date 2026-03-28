@@ -8,7 +8,6 @@ import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useContext, useEffect, useState } from "react";
-import DefaultAvatar from "./DefaultAvatar";
 
 interface RelationshipManagerProps {
   person: Person;
@@ -43,7 +42,7 @@ export default function RelationshipManager({
   const dashboardContext = useContext(DashboardContext);
   const { setMemberModalId } = useDashboard();
   const router = useRouter();
-  
+
   const personId = person.id;
   const personGender = person.gender;
 
@@ -663,26 +662,6 @@ export default function RelationshipManager({
                       onClick={() => handlePersonClick(rel.targetPerson.id)}
                       className="flex items-center gap-3 hover:bg-stone-100 p-2.5 -mx-2.5 rounded-xl transition-all duration-200 flex-1 text-left"
                     >
-                      <div
-                        className={`size-8 rounded-full flex items-center justify-center text-xs text-white overflow-hidden
-                            ${getAvatarBg(rel.targetPerson.gender)}`}
-                      >
-                        {rel.targetPerson.avatar_url ? (
-                          <Image
-                            unoptimized
-                            src={rel.targetPerson.avatar_url}
-                            alt={rel.targetPerson.full_name}
-                            className="h-full w-full object-cover"
-                            width={32}
-                            height={32}
-                          />
-                        ) : (
-                          <DefaultAvatar
-                            gender={rel.targetPerson.gender}
-                            size={32}
-                          />
-                        )}
-                      </div>
                       <div className="flex flex-col">
                         <span className="text-stone-900 font-medium text-sm">
                           {rel.targetPerson.full_name}

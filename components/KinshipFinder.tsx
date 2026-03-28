@@ -15,7 +15,6 @@ import {
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
-import DefaultAvatar from "./DefaultAvatar";
 import { FemaleIcon, MaleIcon } from "./GenderIcons";
 
 interface PersonNode {
@@ -26,7 +25,6 @@ interface PersonNode {
   birth_order: number | null;
   generation: number | null;
   is_in_law: boolean;
-  avatar_url?: string | null;
 }
 
 interface RelEdge {
@@ -90,27 +88,6 @@ function PersonSelector({
         }`}
       >
         <div className="relative shrink-0">
-          <div
-            className={`size-10 rounded-full flex items-center justify-center text-sm font-bold text-white overflow-hidden ring-2 ring-white shadow-sm
-            ${selected ? getAvatarBg(selected.gender) : "bg-stone-100 text-stone-400"}`}
-          >
-            {selected ? (
-              selected.avatar_url ? (
-                <Image
-                  unoptimized
-                  src={selected.avatar_url}
-                  alt={selected.full_name}
-                  width={40}
-                  height={40}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <DefaultAvatar gender={selected.gender} size={40} />
-              )
-            ) : (
-              "?"
-            )}
-          </div>
           {selected && (
             <div
               className={`absolute -bottom-1 -right-1 size-4 rounded-full ring-2 ring-white shadow-xs flex items-center justify-center ${getGenderStyle(selected.gender)}`}
@@ -172,23 +149,6 @@ function PersonSelector({
                     className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-amber-50 transition-colors text-left"
                   >
                     <div className="relative shrink-0">
-                      <div
-                        className={`size-8 rounded-full flex items-center justify-center text-xs font-bold text-white overflow-hidden ring-1 ring-white shadow-xs
-                        ${getAvatarBg(p.gender)}`}
-                      >
-                        {p.avatar_url ? (
-                          <Image
-                            unoptimized
-                            src={p.avatar_url}
-                            alt={p.full_name}
-                            width={32}
-                            height={32}
-                            className="h-full w-full object-cover"
-                          />
-                        ) : (
-                          <DefaultAvatar gender={p.gender} size={32} />
-                        )}
-                      </div>
                       <div
                         className={`absolute -bottom-0.5 -right-0.5 size-3.5 rounded-full ring-1 ring-white shadow-xs flex items-center justify-center ${getGenderStyle(p.gender)}`}
                       >

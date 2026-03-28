@@ -4,7 +4,6 @@ import { Person, Relationship } from "@/types";
 import { buildAdjacencyLists, getFilteredTreeData } from "@/utils/treeHelpers";
 import * as d3 from "d3";
 import { useEffect, useMemo, useRef } from "react";
-import { AVATAR_VERSION } from "./DefaultAvatar";
 
 export interface BubbleMapTreeProps {
   personsMap: Map<string, Person>;

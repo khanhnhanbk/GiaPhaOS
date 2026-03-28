@@ -12,6 +12,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 
+function formatDateYMD(dateString: string): string {
+  const date = new Date(dateString);
+  if (Number.isNaN(date.getTime())) return "Không rõ";
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+
 interface AdminUserListProps {
   initialUsers: AdminUserData[];
   currentUserId: string;
@@ -365,7 +374,7 @@ export default function AdminUserList({
                     </button>
                   </td>
                   <td className="px-6 py-4 text-stone-500">
-                    {new Date(user.created_at).toLocaleDateString("vi-VN")}
+                    {formatDateYMD(user.created_at)}
                   </td>
                   <td className="px-6 py-4 text-right">
                     {user.id !== currentUserId && (

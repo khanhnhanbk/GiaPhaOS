@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { memo, useState } from "react";
-import DefaultAvatar from "./DefaultAvatar";
 
 import { getAvatarBg } from "@/utils/styleHelprs";
 import { AdjacencyLists, getFilteredTreeData } from "@/utils/treeHelpers";
@@ -135,29 +134,6 @@ export const MindmapNode = memo(
               >
                 <div className="flex items-center gap-2.5 relative z-10 w-full">
                   <div className="flex flex-1 items-center gap-2.5 min-w-0">
-                    {ctx.showAvatar && (
-                      <div className="relative shrink-0">
-                        <div
-                          className={`size-10 rounded-full overflow-hidden flex items-center justify-center text-white text-xs font-bold shadow-md ring-2 ring-white transition-transform duration-300 group-hover/card:scale-105 ${getAvatarBg(data.person.gender)}`}
-                        >
-                          {data.person.avatar_url ? (
-                            <Image
-                              unoptimized
-                              src={data.person.avatar_url}
-                              alt={data.person.full_name}
-                              width={40}
-                              height={40}
-                              className="h-full w-full object-cover"
-                            />
-                          ) : (
-                            <DefaultAvatar
-                              gender={data.person.gender}
-                              size={40}
-                            />
-                          )}
-                        </div>
-                      </div>
-                    )}
                     <div className="flex flex-col min-w-0 flex-1">
                       <span className="font-bold text-[14px] text-stone-900 group-hover/card:text-amber-700 transition-colors leading-tight truncate mb-0.5">
                         {data.person.full_name}
@@ -226,27 +202,6 @@ export const MindmapNode = memo(
                                 : "Vợ")
                             }
                           >
-                            {ctx.showAvatar && (
-                              <div
-                                className={`size-8 rounded-full overflow-hidden flex items-center justify-center text-white text-[10px] font-bold shadow-sm ring-2 ring-white transition-transform duration-300 group-hover/spouse:scale-105 ${getAvatarBg(spouseData.person.gender)}`}
-                              >
-                                {spouseData.person.avatar_url ? (
-                                  <Image
-                                    unoptimized
-                                    src={spouseData.person.avatar_url}
-                                    alt={spouseData.person.full_name}
-                                    width={32}
-                                    height={32}
-                                    className="h-full w-full object-cover"
-                                  />
-                                ) : (
-                                  <DefaultAvatar
-                                    gender={spouseData.person.gender}
-                                    size={32}
-                                  />
-                                )}
-                              </div>
-                            )}
                             <span className="text-[10px] font-bold text-stone-600 truncate max-w-[50px] text-center">
                               {spouseData.person.full_name.split(" ").pop()}
                             </span>
