@@ -15,7 +15,7 @@ import {
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
-import { FemaleIcon, MaleIcon } from "./GenderIcons";
+import { FemaleIcon, MaleIcon } from "@/components";
 
 interface PersonNode {
   id: string;

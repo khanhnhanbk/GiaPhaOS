@@ -1,7 +1,7 @@
 "use client";
 
 import { Eye, EyeOff } from "lucide-react";
-import { useDashboard } from "./DashboardContext";
+import { useDashboard } from "@/components";
 
 export default function AvatarToggle() {
   const { showAvatar, setShowAvatar } = useDashboard();

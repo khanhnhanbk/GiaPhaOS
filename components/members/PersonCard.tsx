@@ -3,9 +3,9 @@
 import { Person } from "@/types";
 import { getAvatarBg } from "@/utils/styleHelprs";
 import Image from "next/image";
-import { useDashboard } from "./DashboardContext";
-import DefaultAvatar from "./DefaultAvatar";
-import { FemaleIcon, MaleIcon } from "./GenderIcons";
+import { useDashboard } from "@/components";
+import { DefaultAvatar } from "@/components";
+import { FemaleIcon, MaleIcon } from "@/components";
 
 interface PersonCardProps {
   person: Person;

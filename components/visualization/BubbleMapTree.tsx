@@ -26,6 +26,7 @@ interface GraphLink extends d3.SimulationLinkDatum<GraphNode> {
 }
 
 const showAvatar = true;
+const AVATAR_VERSION = 2;
 
 export default function BubbleMapTree({
   personsMap,

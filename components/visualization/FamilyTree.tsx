@@ -11,9 +11,9 @@ import React, {
 import { usePanZoom } from "@/hooks/usePanZoom";
 import { Person, Relationship } from "@/types";
 import { Minus, Plus } from "lucide-react";
-import { useDashboard } from "./DashboardContext";
+import { useDashboard } from "@/components";
 import FamilyNodeCard from "./FamilyNodeCard";
-import TreeToolbar from "./TreeToolbar";
+import { TreeToolbar } from "@/components";
 
 import { buildAdjacencyLists, getFilteredTreeData } from "@/utils/treeHelpers";
 

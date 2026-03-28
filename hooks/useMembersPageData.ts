@@ -1,5 +1,5 @@
 import { MembersPageData } from "@/types";
-import { ViewMode } from "@/components/ViewToggle";
+import { ViewMode } from "@/components";
 import {
   canEditProfile,
   getMembersPageData,

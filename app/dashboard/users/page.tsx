@@ -1,4 +1,4 @@
-import AdminUserList from "@/components/AdminUserList";
+import { AdminUserList } from "@/components";
 import { AdminUserData } from "@/types";
 import { getProfile, getSupabase } from "@/utils/supabase/queries";
 import { redirect } from "next/navigation";

@@ -1,6 +1,6 @@
 "use client";
 
-import { DashboardContext, useDashboard } from "@/components/DashboardContext";
+import { DashboardContext, useDashboard } from "@/components";
 import { Person, RelationshipType } from "@/types";
 import { formatDisplayDate } from "@/utils/dateHelpers";
 import { getAvatarBg } from "@/utils/styleHelprs";

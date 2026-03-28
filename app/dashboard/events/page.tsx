@@ -1,6 +1,6 @@
-import { DashboardProvider } from "@/components/DashboardContext";
-import EventsList from "@/components/EventsList";
-import MemberDetailModal from "@/components/MemberDetailModal";
+import { DashboardProvider } from "@/components";
+import { EventsList } from "@/components";
+import { MemberDetailModal } from "@/components";
 import { getSupabase } from "@/utils/supabase/queries";
 
 export const metadata = {

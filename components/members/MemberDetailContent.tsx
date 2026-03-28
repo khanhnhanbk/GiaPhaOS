@@ -1,6 +1,6 @@
 "use client";
 
-import RelationshipManager from "@/components/RelationshipManager";
+import { RelationshipManager } from "@/components";
 import { Person } from "@/types";
 import {
   calculateAge,
@@ -24,8 +24,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useState } from "react";
-import { FemaleIcon, MaleIcon } from "./GenderIcons";
-import DefaultAvatar from "./DefaultAvatar";
+import { FemaleIcon, MaleIcon } from "@/components";
+import { DefaultAvatar } from "@/components";
 
 interface MemberDetailContentProps {
   person: Person;

@@ -1,8 +1,8 @@
 "use client";
 
 import { Person } from "@/types";
-import { useDashboard } from "./DashboardContext";
-import PersonSelector from "./PersonSelector";
+import { useDashboard } from "@/components";
+import { PersonSelector } from "@/components";
 
 export default function RootSelector({
   persons,

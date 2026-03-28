@@ -1,4 +1,4 @@
-import KinshipFinder from "@/components/KinshipFinder";
+import { KinshipFinder } from "@/components";
 import { getSupabase } from "@/utils/supabase/queries";
 
 export const metadata = {

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Circle, List, ListTree, Network } from "lucide-react";
-import { useDashboard } from "./DashboardContext";
+import { useDashboard } from "@/components";
 
 export type ViewMode = "list" | "tree" | "mindmap" | "bubble";
 

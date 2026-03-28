@@ -1,7 +1,7 @@
-import { DashboardProvider } from "@/components/DashboardContext";
-import DashboardViews from "@/components/DashboardViews";
-import MemberDetailModal from "@/components/MemberDetailModal";
-import ViewToggle from "@/components/ViewToggle";
+import { DashboardProvider } from "@/components";
+import { DashboardViews } from "@/components";
+import { MemberDetailModal } from "@/components";
+import { ViewToggle } from "@/components";
 import { useMembersPageData } from "@/hooks/useMembersPageData";
 
 interface PageProps {

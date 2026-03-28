@@ -1,10 +1,10 @@
 "use client";
 
-import PersonCard from "@/components/PersonCard";
+import { PersonCard } from "@/components";
 import { Person, Relationship } from "@/types";
 import { ArrowUpDown, Filter, Plus, Search } from "lucide-react";
 import { useMemo, useState } from "react";
-import { useDashboard } from "./DashboardContext";
+import { useDashboard } from "@/components";
 
 export default function DashboardMemberList({
   initialPersons,

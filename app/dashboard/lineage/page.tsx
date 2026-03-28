@@ -1,4 +1,4 @@
-import LineageManager from "@/components/LineageManager";
+import { LineageManager } from "@/components";
 import { getProfile, getSupabase } from "@/utils/supabase/queries";
 import { redirect } from "next/navigation";
 

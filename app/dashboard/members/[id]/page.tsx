@@ -1,5 +1,5 @@
-import DeleteMemberButton from "@/components/DeleteMemberButton";
-import MemberDetailContent from "@/components/MemberDetailContent";
+import { DeleteMemberButton } from "@/components";
+import { MemberDetailContent } from "@/components";
 import { getProfile, getSupabase } from "@/utils/supabase/queries";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";

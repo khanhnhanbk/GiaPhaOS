@@ -1,5 +1,5 @@
 import config from "@/app/config";
-import HeaderMenu from "@/components/HeaderMenu";
+import { HeaderMenu } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 

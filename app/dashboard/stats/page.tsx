@@ -1,4 +1,4 @@
-import FamilyStats from "@/components/FamilyStats";
+import { FamilyStats } from "@/components";
 import { getSupabase } from "@/utils/supabase/queries";
 
 export const metadata = {

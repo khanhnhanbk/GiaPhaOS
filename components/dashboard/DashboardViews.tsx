@@ -1,15 +1,15 @@
 "use client";
 
-import { useDashboard } from "@/components/DashboardContext";
-import DashboardMemberList from "@/components/DashboardMemberList";
-import RootSelector from "@/components/RootSelector";
+import { useDashboard } from "@/components";
+import { DashboardMemberList } from "@/components";
+import { RootSelector } from "@/components";
 import { Person, Relationship } from "@/types";
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
 
-const FamilyTree = dynamic(() => import("@/components/FamilyTree"));
-const MindmapTree = dynamic(() => import("@/components/MindmapTree"));
-const BubbleMapTree = dynamic(() => import("@/components/BubbleMapTree"));
+const FamilyTree = dynamic(() => import("@/components/visualization/FamilyTree"));
+const MindmapTree = dynamic(() => import("@/components/visualization/MindmapTree"));
+const BubbleMapTree = dynamic(() => import("@/components/visualization/BubbleMapTree"));
 
 interface DashboardViewsProps {
   persons: Person[];

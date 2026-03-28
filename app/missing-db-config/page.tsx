@@ -1,6 +1,6 @@
 "use client";
 
-import Footer from "@/components/Footer";
+import { Footer } from "@/components";
 import { motion } from "framer-motion";
 import { ArrowLeft, Database, Settings, Terminal } from "lucide-react";
 import Link from "next/link";

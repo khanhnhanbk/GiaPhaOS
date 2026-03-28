@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+import { Footer } from "@/components";
 import { promises as fs } from "fs";
 import { ArrowLeft, Database, Play } from "lucide-react";
 import Link from "next/link";

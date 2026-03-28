@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer";
-import LandingHero from "@/components/LandingHero";
+import { Footer } from "@/components";
+import { LandingHero } from "@/components";
 import config from "./config";
 
 export default function HomePage() {

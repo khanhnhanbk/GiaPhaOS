@@ -5,7 +5,7 @@ import { Person } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { AlertTriangle, CheckCircle2, Download, Upload } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import PersonSelector from "./PersonSelector";
+import { PersonSelector } from "@/components";
 
 export default function DataImportExport() {
   const [isExporting, setIsExporting] = useState(false);
@@ -53,7 +53,6 @@ export default function DataImportExport() {
 
       if (format === "csv") {
         const { exportToCsvZip } = await import("@/utils/csv");
-        // @ts-expect-error: BackupPayload relationships type mismatch with Partial<Relationship>
         const zipBlob = await exportToCsvZip(data);
         const url = URL.createObjectURL(zipBlob);
         const a = document.createElement("a");

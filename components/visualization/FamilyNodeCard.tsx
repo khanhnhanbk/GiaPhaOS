@@ -3,7 +3,7 @@
 import { Person } from "@/types";
 import { getAvatarBg } from "@/utils/styleHelprs";
 import Image from "next/image";
-import { useDashboard } from "./DashboardContext";
+import { useDashboard } from "@/components";
 
 interface FamilyNodeCardProps {
   person: Person;

@@ -5,7 +5,7 @@ import { BarChart2, ChevronDown, Database, GitMerge, Info, Network, UserCircle, 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import LogoutButton from "./LogoutButton";
-import { useUser } from "./UserProvider";
+import { useUser } from "@/components";
 
 export default function HeaderMenu() {
   const { user, isAdmin } = useUser();

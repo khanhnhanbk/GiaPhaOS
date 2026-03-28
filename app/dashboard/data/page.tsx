@@ -1,4 +1,4 @@
-import DataImportExport from "@/components/DataImportExport";
+import { DataImportExport } from "@/components";
 import { getProfile } from "@/utils/supabase/queries";
 import { redirect } from "next/navigation";
 

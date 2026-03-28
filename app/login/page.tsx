@@ -1,7 +1,7 @@
 "use client";
 
 import config from "@/app/config";
-import Footer from "@/components/Footer";
+import { Footer } from "@/components";
 import { createClient } from "@/utils/supabase/client";
 import { AnimatePresence, motion } from "framer-motion";
 import {

@@ -1,15 +1,15 @@
 "use client";
 
-import MemberDetailContent from "@/components/MemberDetailContent";
-import MemberForm from "@/components/MemberForm";
+import { MemberDetailContent } from "@/components";
+import { MemberForm } from "@/components";
 import { Person } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { AlertCircle, ArrowLeft, Edit2, ExternalLink, X } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
-import { useDashboard } from "./DashboardContext";
-import { useUser } from "./UserProvider";
+import { useDashboard } from "@/components";
+import { useUser } from "@/components";
 
 export default function MemberDetailModal() {
   const {

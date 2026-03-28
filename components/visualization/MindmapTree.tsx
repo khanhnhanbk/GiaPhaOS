@@ -3,9 +3,9 @@
 import { Person, Relationship } from "@/types";
 import { Share2 } from "lucide-react";
 import { useMemo, useState } from "react";
-import { useDashboard } from "./DashboardContext";
+import { useDashboard } from "@/components";
 import { MindmapContextData, MindmapNode } from "./MindmapNode";
-import MindmapToolbar from "./MindmapToolbar";
+import { MindmapToolbar } from "@/components";
 
 import { buildAdjacencyLists } from "@/utils/treeHelpers";
 

@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
-import { ViewMode } from "./ViewToggle";
+import { ViewMode } from "@/components";
 
 interface DashboardState {
   memberModalId: string | null;

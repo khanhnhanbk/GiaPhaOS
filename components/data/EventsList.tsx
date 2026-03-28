@@ -21,7 +21,7 @@ import { Solar } from "lunar-javascript";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import CustomEventModal from "./CustomEventModal";
-import { useDashboard } from "./DashboardContext";
+import { useDashboard } from "@/components";
 
 interface EventsListProps {
   persons: {

@@ -1,8 +1,8 @@
 import config from "@/app/config";
-import DashboardHeader from "@/components/DashboardHeader";
-import Footer from "@/components/Footer";
-import LogoutButton from "@/components/LogoutButton";
-import { UserProvider } from "@/components/UserProvider";
+import { DashboardHeader } from "@/components";
+import { Footer } from "@/components";
+import { LogoutButton } from "@/components";
+import { UserProvider } from "@/components";
 import { getProfile, getUser } from "@/utils/supabase/queries";
 import Link from "next/link";
 import { redirect } from "next/navigation";
