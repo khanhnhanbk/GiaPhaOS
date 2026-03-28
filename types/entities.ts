@@ -61,6 +61,22 @@ export interface Relationship {
   updated_at: string;
 }
 
+export interface PersonDetailsPrivate {
+  person_id: string;
+  phone_number: string | null;
+  occupation: string | null;
+  current_residence: string | null;
+}
+
+export interface CustomEvent {
+  id: string;
+  name: string;
+  content: string | null;
+  event_date: string;
+  location: string | null;
+  created_by: string | null;
+}
+
 export interface PersonWithDetails extends Person {
   spouses?: Person[];
   children?: Person[];
