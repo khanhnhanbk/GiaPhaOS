@@ -1,6 +1,19 @@
 import { getProfile } from "@/utils/supabase/queries";
-import { MembersPageData, Person, Profile, Relationship } from "@/types";
-import { getAllPersons, getAllRelationships } from "@/repositories/membersRepository";
+import {
+  MembersPageData,
+  Person,
+  PersonDetailsPrivate,
+  Profile,
+  Relationship,
+  CustomEvent,
+} from "@/types";
+import {
+  getAllPersons,
+  getAllRelationships,
+  getAllCustomEvents,
+  getPersonById,
+  getPersonDetailsPrivateById,
+} from "@/repositories/membersRepository";
 
 export async function getMembersPageData(): Promise<MembersPageData> {
   const [persons, relationships, profile] = await Promise.all([
@@ -10,6 +23,66 @@ export async function getMembersPageData(): Promise<MembersPageData> {
   ]);
 
   return { persons, relationships, profile };
+}
+
+export async function getPersonAndRelationships(): Promise<{
+  persons: Person[];
+  relationships: Relationship[];
+}> {
+  const [persons, relationships] = await Promise.all([
+    getAllPersons(),
+    getAllRelationships(),
+  ]);
+
+  return { persons, relationships };
+}
+
+export async function getPersonAndCustomEvents(): Promise<{
+  persons: Person[];
+  customEvents: CustomEvent[];
+}> {
+  const [persons, customEvents] = await Promise.all([
+    getAllPersons(),
+    getAllCustomEvents(),
+  ]);
+
+  return { persons, customEvents };
+}
+
+export async function getKinshipPageData(): Promise<{
+  persons: Person[];
+  relationships: Relationship[];
+}> {
+  const [persons, relationships] = await Promise.all([
+    getAllPersons(),
+    getAllRelationships(),
+  ]);
+
+  return { persons, relationships };
+}
+
+export async function getMemberPageData(
+  memberId: string,
+): Promise<{
+  person: Person | null;
+  privateData: PersonDetailsPrivate | null;
+  profile: Profile | null;
+}> {
+  const [person, profile] = await Promise.all([
+    getPersonById(memberId),
+    getProfile(),
+  ]);
+
+  let privateData: PersonDetailsPrivate | null = null;
+  if (profile?.role === "admin" && person) {
+    privateData = await getPersonDetailsPrivateById(memberId);
+  }
+
+  return {
+    person,
+    privateData,
+    profile,
+  };
 }
 
 export function canEditProfile(profile: Profile | null): boolean {

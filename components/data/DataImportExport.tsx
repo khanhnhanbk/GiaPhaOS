@@ -1,6 +1,7 @@
 "use client";
 
 import { exportData, importData } from "@/app/actions/data";
+import { getPersonOptions } from "@/hooks/usePersonOptions";
 import { Person } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { AlertTriangle, CheckCircle2, Download, Upload } from "lucide-react";
@@ -25,13 +26,8 @@ export default function DataImportExport() {
   useEffect(() => {
     async function fetchPersons() {
       try {
-        const { createClient } = await import("@/utils/supabase/client");
-        const supabase = createClient();
-        const { data } = await supabase
-          .from("persons")
-          .select("id, full_name, birth_year, gender, avatar_url, generation")
-          .order("birth_year", { ascending: true, nullsFirst: false });
-        if (data) setPersons(data as Person[]);
+        const personOptions = await getPersonOptions();
+        setPersons(personOptions);
       } catch (err) {
         console.error("Error fetching persons:", err);
       }

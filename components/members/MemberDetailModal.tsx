@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { useDashboard } from "@/components";
 import { useUser } from "@/components";
+import { getMemberDetail } from "@/hooks/useMemberDetail";
 
 export default function MemberDetailModal() {
   const {
@@ -18,7 +19,7 @@ export default function MemberDetailModal() {
     showCreateMember,
     setShowCreateMember,
   } = useDashboard();
-  const { isAdmin, isEditor: canEdit, supabase } = useUser();
+  const { isAdmin, isEditor: canEdit } = useUser();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -38,44 +39,26 @@ export default function MemberDetailModal() {
     setIsEditing(false);
   };
 
-  const fetchData = useCallback(
-    async (id: string) => {
-      setLoading(true);
-      setError(null);
-      try {
-        // 1. Fetch Person Public Data
-        const { data: personData, error: personError } = await supabase
-          .from("persons")
-          .select("*")
-          .eq("id", id)
-          .single();
+  const fetchData = useCallback(async (id: string) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const { person: personData, privateData: privData } = await getMemberDetail(id);
 
-        if (personError || !personData) {
-          throw new Error("Không thể tải thông tin thành viên.");
-        }
-        setPerson(personData);
-
-        // 2. Fetch Private Data if Admin
-        if (isAdmin) {
-          const { data: privData } = await supabase
-            .from("person_details_private")
-            .select("*")
-            .eq("person_id", id)
-            .single();
-          setPrivateData(privData || {});
-        } else {
-          setPrivateData(null);
-        }
-      } catch (err) {
-        console.error("Error fetching member details:", err);
-        // @ts-expect-error - err is caught as unknown, but we check for message
-        setError(err?.message || "Đã xảy ra lỗi hệ thống.");
-      } finally {
-        setLoading(false);
+      if (!personData) {
+        throw new Error("Không thể tải thông tin thành viên.");
       }
-    },
-    [isAdmin, supabase],
-  );
+
+      setPerson(personData);
+      setPrivateData(privData ? (privData as unknown as Record<string, unknown>) : null);
+    } catch (err) {
+      console.error("Error fetching member details:", err);
+      // @ts-expect-error - err is caught as unknown, but we check for message
+      setError(err?.message || "Đã xảy ra lỗi hệ thống.");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   // Sync state with URL parameter or create mode
   useEffect(() => {

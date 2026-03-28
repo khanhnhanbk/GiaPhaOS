@@ -1,6 +1,6 @@
 import { DeleteMemberButton } from "@/components";
 import { MemberDetailContent } from "@/components";
-import { getProfile, getSupabase } from "@/utils/supabase/queries";
+import { useMemberDetailPageData } from "@/hooks/useMemberDetailPageData";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -10,35 +10,12 @@ interface PageProps {
 }
 
 export default async function MemberDetailPage({ params }: PageProps) {
-  const { id } = await params;
+  const { person, privateData, isAdmin, canEdit } = await useMemberDetailPageData(
+    params,
+  );
 
-  const profile = await getProfile();
-
-  const isAdmin = profile?.role === "admin";
-  const canEdit = profile?.role === "admin" || profile?.role === "editor";
-
-  const supabase = await getSupabase();
-
-  // Fetch Person Public Data
-  const { data: person, error } = await supabase
-    .from("persons")
-    .select("*")
-    .eq("id", id)
-    .single();
-
-  if (error || !person) {
+  if (!person) {
     notFound();
-  }
-
-  // Fetch Private Data if Admin
-  let privateData = null;
-  if (isAdmin) {
-    const { data } = await supabase
-      .from("person_details_private")
-      .select("*")
-      .eq("person_id", id)
-      .single();
-    privateData = data;
   }
 
   return (
@@ -61,12 +38,12 @@ export default async function MemberDetailPage({ params }: PageProps) {
         {canEdit && (
           <div className="flex items-center gap-2.5">
             <Link
-              href={`/dashboard/members/${id}/edit`}
+              href={`/dashboard/members/${person.id}/edit`}
               className="px-4 py-2 bg-stone-100/80 text-stone-700 rounded-lg hover:bg-stone-200 hover:text-stone-900 font-medium text-sm transition-all shadow-sm"
             >
               Chỉnh sửa
             </Link>
-            <DeleteMemberButton memberId={id} />
+            <DeleteMemberButton memberId={person.id} />
           </div>
         )}
       </div>

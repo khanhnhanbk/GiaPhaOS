@@ -1,17 +1,12 @@
 import { FamilyStats } from "@/components";
-import { getSupabase } from "@/utils/supabase/queries";
+import { useStatsPageData } from "@/hooks/useStatsPageData";
 
 export const metadata = {
   title: "Thống kê gia phả",
 };
 
 export default async function StatsPage() {
-  const supabase = await getSupabase();
-
-  const { data: persons } = await supabase.from("persons").select("*");
-  const { data: relationships } = await supabase
-    .from("relationships")
-    .select("*");
+  const { persons, relationships } = await useStatsPageData();
 
   return (
     <div className="flex-1 w-full relative flex flex-col pb-12">
