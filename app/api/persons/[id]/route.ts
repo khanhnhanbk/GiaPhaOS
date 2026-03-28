@@ -1,12 +1,13 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getMemberDetailById } from "@/services/personsService";
 
 export async function GET(
-  _request: Request,
-  { params }: { params: { id: string } },
+  _request: NextRequest,
+  context: { params: Promise<{ id: string }> },
 ) {
-  const memberId = params.id;
-  const result = await getMemberDetailById(memberId);
+  const { id } = await context.params;
+
+  const result = await getMemberDetailById(id);
 
   if (!result.person) {
     return NextResponse.json(
